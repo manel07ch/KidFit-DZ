@@ -47,7 +47,7 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                 reader.readAsDataURL(userFile)
             })
 
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/try-on`, {
+            const res = await fetch(`${BACKEND_URL}/api/try-on`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
