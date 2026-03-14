@@ -16,18 +16,149 @@ import { supabase } from '../lib/supabaseClient'
 ══════════════════════════════════════════════════════════ */
 const DEMO_CLOTHING = [
     {
-        name: 'My Custom T-Shirt',
-        image_url: 'https://ضع-رابط-صورتك-هنا.jpg', // استبدل هذا الرابط برابط صورتك
-        affiliate_link: '', // ضع رابط التسويق الخاص بك هنا إن وجد
-        price: 25.99, category: 'tops',
+        name: '2pcs Baby Boy Textured Cute Cartoon Print Shirt',
+        image_url: '/clothes_demo/2pcs_Baby_Boy_Textured_Cute_Cartoon_Print_Shirt_.jfif',
+        affiliate_link: '',
+        price: 14.99, category: 'tops',
     },
     {
-        name: 'My Custom Pants',
-        image_url: 'https://ضع-رابط-صورتك-هنا.jpg', // استبدل هذا الرابط برابط صورتك
-        affiliate_link: '', // ضع رابط التسويق الخاص بك هنا إن وجد
+        name: '2pcs Set Boys Solid Color Long Sleeve Top And Long Pants Set',
+        image_url: '/clothes_demo/2pcs_Set_Boys_Solid_Color_Long_Sleeve_Top_And_Long_Pants_Set.jfif',
+        affiliate_link: '',
+        price: 14.99, category: 'pants',
+    },
+    {
+        name: '2pcs Set Tween Boys Casual Simple Cartoon Cool Car Print Round Neck Short Sleeve T Shirt And Shorts Summer',
+        image_url: '/clothes_demo/2pcs_Set_Tween_Boys_Casual_Simple_Cartoon_Cool_Car_Print_Round_Neck_Short_Sleeve_T-Shirt_And_Shorts__Summer.jfif',
+        affiliate_link: '',
+        price: 44.99, category: 'pants',
+    },
+    {
+        name: '2 Pieces Baby Boy Unisex Newborn Neutral Set It s',
+        image_url: '/clothes_demo/2_Pieces_Baby_Boy_Unisex_Newborn_Neutral_Set__It_s_.jfif',
+        affiliate_link: '',
+        price: 38.99, category: 'tops',
+    },
+    {
+        name: 'Baby Boys Palm Tree Letter Printed Short Sleeve T Shirt And Shorts Set Casual And Comfortable',
+        image_url: '/clothes_demo/Baby_Boys__Palm_Tree___Letter_Printed_Short_Sleeve_T-Shirt_And_Shorts_Set__Casual_And_Comfortable.jfif',
+        affiliate_link: '',
+        price: 12.99, category: 'pants',
+    },
+    {
+        name: 'Baby Boy Flap Pocket Jacket Pants',
+        image_url: '/clothes_demo/Baby_Boy_Flap_Pocket_Jacket___Pants.jfif',
+        affiliate_link: '',
+        price: 11.99, category: 'jackets',
+    },
+    {
+        name: 'Black Casual Collar Short Sleeve Letter',
+        image_url: '/clothes_demo/Black_Casual_Collar_Short_Sleeve__Letter_.jfif',
+        affiliate_link: '',
         price: 49.99, category: 'pants',
     },
-    // يمكنك إضافة المزيد من القطع بنفس الطريقة هنا...
+    {
+        name: 'Blue Boho Collar Letter Tropical Plants',
+        image_url: '/clothes_demo/Blue_Boho_Collar___Letter_Tropical_Plants_.jfif',
+        affiliate_link: '',
+        price: 35.99, category: 'tops',
+    },
+    {
+        name: 'Boys style set',
+        image_url: '/clothes_demo/Boys_style_set.jfif',
+        affiliate_link: '',
+        price: 33.99, category: 'tops',
+    },
+    {
+        name: 'Boys Two Tone Pocket Patched Shirt Trousers',
+        image_url: '/clothes_demo/Boys_Two_Tone_Pocket_Patched_Shirt___Trousers.jfif',
+        affiliate_link: '',
+        price: 15.99, category: 'pants',
+    },
+    {
+        name: 'Boys Two Tone Pocket Patched Shirt Trousers 1',
+        image_url: '/clothes_demo/Boys_Two_Tone_Pocket_Patched_Shirt___Trousers__1_.jfif',
+        affiliate_link: '',
+        price: 33.99, category: 'pants',
+    },
+    {
+        name: 'Clothing merchants take a look Our full category wholesale base has been launched',
+        image_url: '/clothes_demo/Clothing_merchants__take_a_look__Our_full_category_wholesale_base_has_been_launched.jfif',
+        affiliate_link: '',
+        price: 11.99, category: 'tops',
+    },
+    {
+        name: 'Conjunto de Roupa Denim com Estampa Ousada e Personalidade em Todo o Tecido Lavagem cida Esp rito Escolar para Menino Pr Adolescente',
+        image_url: '/clothes_demo/Conjunto_de_Roupa_Denim_com_Estampa_Ousada_e_Personalidade_em_Todo_o_Tecido__Lavagem__cida__Esp_rito_Escolar_para_Menino_Pr_-Adolescente.jfif',
+        affiliate_link: '',
+        price: 49.99, category: 'tops',
+    },
+    {
+        name: 'Cute Baby Boy Clothes',
+        image_url: '/clothes_demo/Cute_Baby_Boy_Clothes.jfif',
+        affiliate_link: '',
+        price: 42.99, category: 'tops',
+    },
+    {
+        name: 'download 1',
+        image_url: '/clothes_demo/download__1_.jfif',
+        affiliate_link: '',
+        price: 30.99, category: 'tops',
+    },
+    {
+        name: 'Mint Green Casual Collar Short Sleeve Letter',
+        image_url: '/clothes_demo/Mint_Green_Casual_Collar_Short_Sleeve__Letter_.jfif',
+        affiliate_link: '',
+        price: 29.99, category: 'pants',
+    },
+    {
+        name: 'Multicolor Casual Collar Short Sleeve',
+        image_url: '/clothes_demo/Multicolor_Casual_Collar_Short_Sleeve_.jfif',
+        affiliate_link: '',
+        price: 11.99, category: 'pants',
+    },
+    {
+        name: 'Multicolor Casual Collar Embellished Slight',
+        image_url: '/clothes_demo/Multicolor_Casual_Collar_____Embellished_Slight_.jfif',
+        affiliate_link: '',
+        price: 23.99, category: 'tops',
+    },
+    {
+        name: 'Pink Casual Collar Animal Cartoon Embellished',
+        image_url: '/clothes_demo/Pink_Casual_Collar___Animal_Cartoon__Embellished_.jfif',
+        affiliate_link: '',
+        price: 44.99, category: 'tops',
+    },
+    {
+        name: 'Pink Collar Floral Letter Plants Slogan',
+        image_url: '/clothes_demo/Pink__Collar___Floral_Letter_Plants_Slogan_.jfif',
+        affiliate_link: '',
+        price: 29.99, category: 'tops',
+    },
+    {
+        name: 'SHEIN USA',
+        image_url: '/clothes_demo/SHEIN_USA.jfif',
+        affiliate_link: '',
+        price: 38.99, category: 'tops',
+    },
+    {
+        name: 'Tween Boys Car Pattern Street Fashion Short Sleeve T Shirt And Shorts Set',
+        image_url: '/clothes_demo/Tween_Boys_Car_Pattern_Street_Fashion_Short_Sleeve_T-Shirt_And_Shorts_Set.jfif',
+        affiliate_link: '',
+        price: 16.99, category: 'pants',
+    },
+    {
+        name: 'Young Boys 2 Piece Set Letter Print Round Neck Short Sleeve Top And Elastic Shorts',
+        image_url: '/clothes_demo/Young_Boys__2-Piece_Set_Letter_Print_Round_Neck_Short_Sleeve_Top_And_Elastic_Shorts.jfif',
+        affiliate_link: '',
+        price: 42.99, category: 'pants',
+    },
+    {
+        name: 'Young Boy Flap Detail Corduroy Jacket Pants Without Tee',
+        image_url: '/clothes_demo/Young_Boy_Flap_Detail_Corduroy_Jacket___Pants_Without_Tee.jfif',
+        affiliate_link: '',
+        price: 30.99, category: 'jackets',
+    },
 ]
 
 const CATEGORIES = ['tops', 'jackets', 'pants', 'dresses', 'shoes', 'accessories']
