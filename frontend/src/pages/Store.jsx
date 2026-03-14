@@ -5,7 +5,7 @@ import {
     Sparkles, LogOut, ShoppingBag, Search, Upload, X,
     Shirt, Camera, ExternalLink, ChevronLeft, Loader2,
     Zap, AlertCircle, User, DollarSign, TrendingUp,
-    Copy, Check, Plus, Tag, Star, Download,
+    Copy, Check, Plus, Tag, Star, Download, Alien,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
@@ -367,7 +367,7 @@ function ProductCard({ item, onClick }) {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        <Shirt size={32} className="text-gray-600" />
+                        <Alien size={48} className="text-violet-500/50 animate-pulse" />
                     </div>
                 )}
 
@@ -564,7 +564,7 @@ export default function Store() {
                         </div>
                     ) : filtered.length === 0 ? (
                         <div className="glass rounded-3xl p-20 text-center max-w-md mx-auto mt-8">
-                            <Shirt size={40} className="text-gray-600 mx-auto mb-4" />
+                            <Alien size={56} className="text-violet-500/50 mx-auto mb-4 animate-pulse" />
                             <p className="text-gray-300 font-semibold">
                                 {search ? `No results for "${search}"` : 'Store is empty'}
                             </p>

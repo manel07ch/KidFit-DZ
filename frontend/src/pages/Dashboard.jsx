@@ -5,7 +5,7 @@ import {
     Upload, Image as ImageIcon, LogOut, Sparkles, Trash2,
     ExternalLink, Plus, X, Check, Copy, DollarSign,
     TrendingUp, Share2, Zap, Link as LinkIcon, Package,
-    ShoppingBag, ChevronDown, ChevronUp, Store, Tag,
+    ShoppingBag, ChevronDown, ChevronUp, Store, Tag, Alien, Loader2,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
@@ -16,149 +16,77 @@ import { supabase } from '../lib/supabaseClient'
 ══════════════════════════════════════════════════════════ */
 const DEMO_CLOTHING = [
     {
-        name: '2pcs Baby Boy Textured Cute Cartoon Print Shirt',
-        image_url: '/clothes_demo/2pcs_Baby_Boy_Textured_Cute_Cartoon_Print_Shirt_.jfif',
+        name: 'Amazon Top 1',
+        image_url: 'https://m.media-amazon.com/images/I/71-tQVWYjWL.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0F3V2PZLB?tag=dhgds88-20',
+        price: 19.99, category: 'tops',
+    },
+    {
+        name: 'Amazon Top 2',
+        image_url: 'https://m.media-amazon.com/images/I/71ZIIDgg41L.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0FMDTQ4B3?tag=dhgds88-20',
+        price: 24.99, category: 'tops',
+    },
+    {
+        name: 'SWISSWELL Boys Long Sleeve Button-up Shirt',
+        image_url: 'https://m.media-amazon.com/images/I/41V+EYwgRdL._AC_SR100,100_QL65_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0F5PYCK2F?tag=dhgds88-20',
+        price: 29.99, category: 'tops',
+    },
+    {
+        name: 'Kids Fashion 1',
+        image_url: 'https://images.unsplash.com/photo-1652501089372-98938d79006e?w=500&q=80',
+        affiliate_link: '',
+        price: 15.99, category: 'tops',
+    },
+    {
+        name: 'Kids Fashion 2',
+        image_url: 'https://i.pinimg.com/1200x/2b/fb/a6/2bfba6cf9e2d0dc241714f4c532d5523.jpg',
+        affiliate_link: '',
+        price: 18.99, category: 'pants',
+    },
+    {
+        name: 'Kids Fashion 3',
+        image_url: 'https://i.pinimg.com/1200x/47/b6/16/47b616b40773ae1cb0431606cdecfc7b.jpg',
+        affiliate_link: '',
+        price: 22.99, category: 'tops',
+    },
+    {
+        name: 'Kids Fashion 4',
+        image_url: 'https://i.pinimg.com/1200x/e3/88/39/e38839fb6271b7be291a500563fcdb72.jpg',
+        affiliate_link: '',
+        price: 25.99, category: 'tops',
+    },
+    {
+        name: 'Kids Fashion 5',
+        image_url: 'https://i.pinimg.com/1200x/80/17/5a/80175ae917c9de324e8d53a53d9f4971.jpg',
+        affiliate_link: '',
+        price: 19.99, category: 'tops',
+    },
+    {
+        name: 'Kids Fashion 6',
+        image_url: 'https://i.pinimg.com/736x/87/23/0d/87230dddfef4c9a1e4c4cc37d6251e20.jpg',
+        affiliate_link: '',
+        price: 28.99, category: 'pants',
+    },
+    {
+        name: 'Kids Fashion 7',
+        image_url: 'https://i.pinimg.com/1200x/c1/96/eb/c196eb2cc1d3200860f059b4de9855af.jpg',
         affiliate_link: '',
         price: 14.99, category: 'tops',
     },
     {
-        name: '2pcs Set Boys Solid Color Long Sleeve Top And Long Pants Set',
-        image_url: '/clothes_demo/2pcs_Set_Boys_Solid_Color_Long_Sleeve_Top_And_Long_Pants_Set.jfif',
+        name: 'Kids Fashion 8',
+        image_url: 'https://i.pinimg.com/1200x/15/07/9a/15079a245957fe4598ed389c1ef2185f.jpg',
         affiliate_link: '',
-        price: 14.99, category: 'pants',
+        price: 16.99, category: 'tops',
     },
     {
-        name: '2pcs Set Tween Boys Casual Simple Cartoon Cool Car Print Round Neck Short Sleeve T Shirt And Shorts Summer',
-        image_url: '/clothes_demo/2pcs_Set_Tween_Boys_Casual_Simple_Cartoon_Cool_Car_Print_Round_Neck_Short_Sleeve_T-Shirt_And_Shorts__Summer.jfif',
+        name: 'Kids Fashion 9',
+        image_url: 'https://i.pinimg.com/1200x/ea/1f/ac/ea1facc2d43fe8389f7118ca71bf1c4c.jpg',
         affiliate_link: '',
-        price: 44.99, category: 'pants',
-    },
-    {
-        name: '2 Pieces Baby Boy Unisex Newborn Neutral Set It s',
-        image_url: '/clothes_demo/2_Pieces_Baby_Boy_Unisex_Newborn_Neutral_Set__It_s_.jfif',
-        affiliate_link: '',
-        price: 38.99, category: 'tops',
-    },
-    {
-        name: 'Baby Boys Palm Tree Letter Printed Short Sleeve T Shirt And Shorts Set Casual And Comfortable',
-        image_url: '/clothes_demo/Baby_Boys__Palm_Tree___Letter_Printed_Short_Sleeve_T-Shirt_And_Shorts_Set__Casual_And_Comfortable.jfif',
-        affiliate_link: '',
-        price: 12.99, category: 'pants',
-    },
-    {
-        name: 'Baby Boy Flap Pocket Jacket Pants',
-        image_url: '/clothes_demo/Baby_Boy_Flap_Pocket_Jacket___Pants.jfif',
-        affiliate_link: '',
-        price: 11.99, category: 'jackets',
-    },
-    {
-        name: 'Black Casual Collar Short Sleeve Letter',
-        image_url: '/clothes_demo/Black_Casual_Collar_Short_Sleeve__Letter_.jfif',
-        affiliate_link: '',
-        price: 49.99, category: 'pants',
-    },
-    {
-        name: 'Blue Boho Collar Letter Tropical Plants',
-        image_url: '/clothes_demo/Blue_Boho_Collar___Letter_Tropical_Plants_.jfif',
-        affiliate_link: '',
-        price: 35.99, category: 'tops',
-    },
-    {
-        name: 'Boys style set',
-        image_url: '/clothes_demo/Boys_style_set.jfif',
-        affiliate_link: '',
-        price: 33.99, category: 'tops',
-    },
-    {
-        name: 'Boys Two Tone Pocket Patched Shirt Trousers',
-        image_url: '/clothes_demo/Boys_Two_Tone_Pocket_Patched_Shirt___Trousers.jfif',
-        affiliate_link: '',
-        price: 15.99, category: 'pants',
-    },
-    {
-        name: 'Boys Two Tone Pocket Patched Shirt Trousers 1',
-        image_url: '/clothes_demo/Boys_Two_Tone_Pocket_Patched_Shirt___Trousers__1_.jfif',
-        affiliate_link: '',
-        price: 33.99, category: 'pants',
-    },
-    {
-        name: 'Clothing merchants take a look Our full category wholesale base has been launched',
-        image_url: '/clothes_demo/Clothing_merchants__take_a_look__Our_full_category_wholesale_base_has_been_launched.jfif',
-        affiliate_link: '',
-        price: 11.99, category: 'tops',
-    },
-    {
-        name: 'Conjunto de Roupa Denim com Estampa Ousada e Personalidade em Todo o Tecido Lavagem cida Esp rito Escolar para Menino Pr Adolescente',
-        image_url: '/clothes_demo/Conjunto_de_Roupa_Denim_com_Estampa_Ousada_e_Personalidade_em_Todo_o_Tecido__Lavagem__cida__Esp_rito_Escolar_para_Menino_Pr_-Adolescente.jfif',
-        affiliate_link: '',
-        price: 49.99, category: 'tops',
-    },
-    {
-        name: 'Cute Baby Boy Clothes',
-        image_url: '/clothes_demo/Cute_Baby_Boy_Clothes.jfif',
-        affiliate_link: '',
-        price: 42.99, category: 'tops',
-    },
-    {
-        name: 'download 1',
-        image_url: '/clothes_demo/download__1_.jfif',
-        affiliate_link: '',
-        price: 30.99, category: 'tops',
-    },
-    {
-        name: 'Mint Green Casual Collar Short Sleeve Letter',
-        image_url: '/clothes_demo/Mint_Green_Casual_Collar_Short_Sleeve__Letter_.jfif',
-        affiliate_link: '',
-        price: 29.99, category: 'pants',
-    },
-    {
-        name: 'Multicolor Casual Collar Short Sleeve',
-        image_url: '/clothes_demo/Multicolor_Casual_Collar_Short_Sleeve_.jfif',
-        affiliate_link: '',
-        price: 11.99, category: 'pants',
-    },
-    {
-        name: 'Multicolor Casual Collar Embellished Slight',
-        image_url: '/clothes_demo/Multicolor_Casual_Collar_____Embellished_Slight_.jfif',
-        affiliate_link: '',
-        price: 23.99, category: 'tops',
-    },
-    {
-        name: 'Pink Casual Collar Animal Cartoon Embellished',
-        image_url: '/clothes_demo/Pink_Casual_Collar___Animal_Cartoon__Embellished_.jfif',
-        affiliate_link: '',
-        price: 44.99, category: 'tops',
-    },
-    {
-        name: 'Pink Collar Floral Letter Plants Slogan',
-        image_url: '/clothes_demo/Pink__Collar___Floral_Letter_Plants_Slogan_.jfif',
-        affiliate_link: '',
-        price: 29.99, category: 'tops',
-    },
-    {
-        name: 'SHEIN USA',
-        image_url: '/clothes_demo/SHEIN_USA.jfif',
-        affiliate_link: '',
-        price: 38.99, category: 'tops',
-    },
-    {
-        name: 'Tween Boys Car Pattern Street Fashion Short Sleeve T Shirt And Shorts Set',
-        image_url: '/clothes_demo/Tween_Boys_Car_Pattern_Street_Fashion_Short_Sleeve_T-Shirt_And_Shorts_Set.jfif',
-        affiliate_link: '',
-        price: 16.99, category: 'pants',
-    },
-    {
-        name: 'Young Boys 2 Piece Set Letter Print Round Neck Short Sleeve Top And Elastic Shorts',
-        image_url: '/clothes_demo/Young_Boys__2-Piece_Set_Letter_Print_Round_Neck_Short_Sleeve_Top_And_Elastic_Shorts.jfif',
-        affiliate_link: '',
-        price: 42.99, category: 'pants',
-    },
-    {
-        name: 'Young Boy Flap Detail Corduroy Jacket Pants Without Tee',
-        image_url: '/clothes_demo/Young_Boy_Flap_Detail_Corduroy_Jacket___Pants_Without_Tee.jfif',
-        affiliate_link: '',
-        price: 30.99, category: 'jackets',
-    },
+        price: 21.99, category: 'jackets',
+    }
 ]
 
 const CATEGORIES = ['tops', 'jackets', 'pants', 'dresses', 'shoes', 'accessories']
@@ -195,7 +123,7 @@ function ItemCard({ item, onDelete }) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        <ImageIcon size={32} className="text-gray-600" />
+                        <Alien size={40} className="text-violet-500/50 animate-pulse" />
                     </div>
                 )}
 
@@ -673,7 +601,7 @@ export default function Dashboard() {
                             </div>
                         ) : items.length === 0 ? (
                             <div className="glass rounded-3xl p-16 text-center">
-                                <ImageIcon size={40} className="text-gray-600 mx-auto mb-4" />
+                                <Alien size={56} className="text-violet-500/50 mx-auto mb-4 animate-pulse" />
                                 <p className="text-gray-400 font-medium">No items yet</p>
                                 <p className="text-gray-600 text-sm mt-1 mb-4">Click <strong className="text-yellow-400">Seed Demo</strong> to instantly add 8 example items!</p>
                                 <button onClick={seedDemoItems} disabled={seeding}
