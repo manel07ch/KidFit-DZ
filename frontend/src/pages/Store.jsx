@@ -3,9 +3,9 @@ import { useNavigate, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
     Sparkles, LogOut, ShoppingBag, Search, Upload, X,
-    Shirt, Camera, ExternalLink, ChevronLeft, Loader2,
+    Shirt, Camera, ExternalLink, ChevronLeft,
     Zap, AlertCircle, User, DollarSign, TrendingUp,
-    Copy, Check, Plus, Tag, Star, Download, Alien,
+    Copy, Check, Plus, Tag, Star, Download,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
@@ -246,7 +246,7 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
 
                         <button id="try-on-btn" onClick={handleTryOn} disabled={loading || !userFile}
                             className="btn-gradient flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow-vp disabled:opacity-40 transition-transform active:scale-95">
-                            {loading ? <><Loader2 size={16} className="animate-spin" />Generating…</> : <><Zap size={16} />Try It On</>}
+                            {loading ? <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Generating…</> : <><Zap size={16} />Try It On</>}
                         </button>
                     </div>
                 </div>
@@ -367,7 +367,7 @@ function ProductCard({ item, onClick }) {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        <Alien size={48} className="text-violet-500/50 animate-pulse" />
+                        <Shirt size={48} className="text-gray-600 animate-pulse" />
                     </div>
                 )}
 
@@ -564,7 +564,7 @@ export default function Store() {
                         </div>
                     ) : filtered.length === 0 ? (
                         <div className="glass rounded-3xl p-20 text-center max-w-md mx-auto mt-8">
-                            <Alien size={56} className="text-violet-500/50 mx-auto mb-4 animate-pulse" />
+                            <Shirt size={56} className="text-gray-600 mx-auto mb-4 animate-pulse" />
                             <p className="text-gray-300 font-semibold">
                                 {search ? `No results for "${search}"` : 'Store is empty'}
                             </p>
