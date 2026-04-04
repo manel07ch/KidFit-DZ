@@ -5,7 +5,7 @@ import {
     Upload, Image as ImageIcon, LogOut, Sparkles, Trash2,
     ExternalLink, Plus, X, Check, Copy, DollarSign,
     TrendingUp, Share2, Zap, Link as LinkIcon, Package,
-    ShoppingBag, ChevronDown, ChevronUp, Store, Tag,
+    ShoppingBag, ChevronDown, ChevronUp, Store, Tag, Shirt,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
@@ -161,7 +161,7 @@ function ItemCard({ item, onDelete }) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        <Alien size={40} className="text-violet-500/50 animate-pulse" />
+                        <Shirt size={40} className="text-violet-500/50 animate-pulse" />
                     </div>
                 )}
 
