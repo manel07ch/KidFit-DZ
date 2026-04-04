@@ -68,19 +68,15 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
         setLinkCopied(true); setTimeout(() => setLinkCopied(false), 2000)
     }
 
-    const handleDownload = async () => {
+    const handleDownload = () => {
         if (!resultImg) return;
         try {
-            const res = await fetch(resultImg);
-            const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.style.display = 'none';
-            a.href = url;
+            a.href = resultImg;  // works for both base64 and URL
             a.download = `kidfit-tryon-${Date.now()}.png`;
             document.body.appendChild(a);
             a.click();
-            window.URL.revokeObjectURL(url);
             a.remove();
         } catch (err) {
             console.error('Download failed:', err);
@@ -269,8 +265,12 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                             flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <TrendingUp size={14} className="text-yellow-400" />
-                                <span className="text-yellow-400 text-xs font-medium">Affiliate Product</span>
-                                <span className="text-gray-500 text-xs">— Buy through this link to support KidFit DZ</span>
+                                {selectedItem.affiliate_link.includes('amazon') ? (
+                                    <span className="amazon-badge">⚡ Amazon</span>
+                                ) : (
+                                    <span className="text-yellow-400 text-xs font-medium">Affiliate Product</span>
+                                )}
+                                <span className="text-gray-500 text-xs">— اشترِ عبر هذا الرابط لدعم KidFit DZ</span>
                             </div>
                             <button onClick={copyAffiliateLink}
                                 className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all ${linkCopied ? 'bg-green-500/20 text-green-400' : 'bg-white/5 text-gray-400 hover:text-white'}`}>

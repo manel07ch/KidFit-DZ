@@ -11,10 +11,48 @@ import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
 
 /* ══════════════════════════════════════════════════════════
-   DEMO SEED DATA — 8 ready-made clothing items
+   DEMO SEED DATA — ready-made clothing items
    Used by the "Seed Demo Store" button
 ══════════════════════════════════════════════════════════ */
 const DEMO_CLOTHING = [
+    // ── Amazon Affiliate Products (tag: dhgds88-20) ────────────────────────
+    {
+        name: 'Toddler Boys Color Block Sweatsuit Outfit Set 3T Fall Winter',
+        image_url: 'https://m.media-amazon.com/images/I/41ZYjESFL7L._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0CFL3R5Q8?tag=dhgds88-20',
+        price: 22.99, category: 'tops',
+    },
+    {
+        name: 'Arshiner Boys Fall Winter Color Block Sweatsuit Pants Set',
+        image_url: 'https://m.media-amazon.com/images/I/31AMO8tnggL._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0D7GX4XRP?tag=dhgds88-20',
+        price: 25.99, category: 'tops',
+    },
+    {
+        name: 'FUNNIDEA Toddler Boys 2 Piece Color Block Sweatshirt Outfit Set',
+        image_url: 'https://m.media-amazon.com/images/I/31ai2xvafRL._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0FDG5BSWC?tag=dhgds88-20',
+        price: 19.99, category: 'tops',
+    },
+    {
+        name: 'KAFIREN 2T Boys Toddler Fall Winter Outfits Long Sleeve Set',
+        image_url: 'https://m.media-amazon.com/images/I/31ZuOaiwNBL._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0CDVYKK1W?tag=dhgds88-20',
+        price: 18.99, category: 'tops',
+    },
+    {
+        name: 'HINTINA 4T Toddler Boys Plaid Sweatsuit Hoodie Outfit Set',
+        image_url: 'https://m.media-amazon.com/images/I/41yqPs+Ry4L._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0DDXL2654?tag=dhgds88-20',
+        price: 26.99, category: 'tops',
+    },
+    {
+        name: 'Hevemexy Toddler Boy Hoodie Sweatsuit Tops and Pants Set',
+        image_url: 'https://m.media-amazon.com/images/I/31ytgxVYTOL._AC_SX600_.jpg',
+        affiliate_link: 'https://www.amazon.com/dp/B0D76YD7MV?tag=dhgds88-20',
+        price: 21.99, category: 'tops',
+    },
+    // ── Local Demo Items ────────────────────────────────────────────────────
     {
         name: 'Amazon Top 1',
         image_url: 'https://m.media-amazon.com/images/I/71-tQVWYjWL.jpg',
@@ -251,7 +289,7 @@ export default function Dashboard() {
         const rows = DEMO_CLOTHING.map((d) => ({ ...d, owner_id: user.id }))
         const { error } = await supabase.from('clothing_items').insert(rows)
         if (error) showToast('error', error.message)
-        else { showToast('success', '8 demo items added to your store! 🎉'); fetchItems() }
+        else { showToast('success', `${DEMO_CLOTHING.length} demo items added to your store! 🎉`); fetchItems() }
         setSeeding(false)
     }
 
@@ -446,10 +484,10 @@ export default function Dashboard() {
                                             <Zap size={14} className="text-yellow-400" /> Pro Tips
                                         </p>
                                         <ul className="space-y-1 text-gray-400 text-xs">
-                                            <li>• Use Amazon Associates, ShareASale, or Impact Radius for affiliate links</li>
-                                            <li>• Set competitive prices — customers who try on are 3x more likely to buy</li>
-                                            <li>• Upload high-quality, flat-lay product images for best try-on results</li>
-                                            <li>• Share your store link on social media: <span className="text-violet-400">localhost:5173/store</span></li>
+                                            <li>• استخدم <strong className="text-yellow-400">Amazon Associates</strong> للحصول على روابط تابعة وكسب عمولة من كل بيع</li>
+                                            <li>• سعر تنافسي مهم — العملاء الذين يجربون ملبساً افتراضياً أكثر عرضة للشراء بـ 3 أضعاف</li>
+                                            <li>• ارفع صور عالية الجودة وبخلفية بيضاء للحصول على أفضل نتائج Try-On</li>
+                                            <li>• شارك رابط متجرك على وسائل التواصل الاجتماعي: <span className="text-violet-400 break-all">{window.location.origin}/store</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -553,7 +591,7 @@ export default function Dashboard() {
                                     </label>
                                     <input id="item-link" type="url" value={affiliateLink}
                                         onChange={(e) => setAffiliateLink(e.target.value)}
-                                        placeholder="https://amazon.com/your-item?tag=yourID"
+                                        placeholder="https://www.amazon.com/dp/XXXXXX?tag=YOUR-AMAZON-TAG"
                                         className="input-glass" style={{ borderColor: affiliateLink ? 'rgba(234,179,8,0.4)' : undefined }} />
                                     {affiliateLink && (
                                         <p className="text-yellow-500/70 text-xs mt-1 flex items-center gap-1">
