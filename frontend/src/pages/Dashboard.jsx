@@ -639,7 +639,7 @@ export default function Dashboard() {
                             </div>
                         ) : items.length === 0 ? (
                             <div className="glass rounded-3xl p-16 text-center">
-                                <Alien size={56} className="text-violet-500/50 mx-auto mb-4 animate-pulse" />
+                                <Shirt size={56} className="text-violet-500/50 mx-auto mb-4 animate-pulse" />
                                 <p className="text-gray-400 font-medium">No items yet</p>
                                 <p className="text-gray-600 text-sm mt-1 mb-4">Click <strong className="text-yellow-400">Seed Demo</strong> to instantly add 8 example items!</p>
                                 <button onClick={seedDemoItems} disabled={seeding}
