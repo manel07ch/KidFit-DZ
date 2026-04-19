@@ -5,7 +5,7 @@ import {
     Sparkles, LogOut, ShoppingBag, Search, Upload, X,
     Shirt, Camera, ExternalLink, ChevronLeft,
     Zap, AlertCircle, User, DollarSign, TrendingUp,
-    Copy, Check, Plus, Tag, Star, Download, Maximize2, ZoomIn,
+    Copy, Check, Plus, Tag, Star, Download,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
@@ -26,7 +26,6 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
     const [error, setError] = useState(null)
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const [linkCopied, setLinkCopied] = useState(false)
-    const [zoomOpen, setZoomOpen] = useState(false)
     const fileRef = useRef(null)
 
     const sideItems = allItems.filter((i) => i.id !== selectedItem.id).slice(0, 4)
@@ -85,14 +84,9 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
     }
 
     useEffect(() => {
-        const h = (e) => {
-            if (e.key === 'Escape') {
-                if (zoomOpen) setZoomOpen(false)
-                else onClose()
-            }
-        }
+        const h = (e) => { if (e.key === 'Escape') onClose() }
         window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h)
-    }, [onClose, zoomOpen])
+    }, [onClose])
 
     /* Side item card */
     const SideCard = ({ sideItem }) => (
@@ -187,31 +181,11 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                             {resultImg && !loading && (
                                 <motion.div key="result"
                                     initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }}
-                                    className="relative w-full h-full flex items-center justify-center group/result">
-
-                                    {/* Clickable image → opens zoom */}
-                                    <img
-                                        src={resultImg}
-                                        alt="Try-on result"
-                                        onClick={() => setZoomOpen(true)}
-                                        title="Click to enlarge"
-                                        className="w-full h-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/result:scale-[1.02]"
-                                    />
-
-                                    {/* Zoom hint overlay on hover */}
-                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none
-                                        opacity-0 group-hover/result:opacity-100 transition-opacity duration-300">
-                                        <div className="bg-black/40 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2">
-                                            <ZoomIn size={16} className="text-white" />
-                                            <span className="text-white text-xs font-semibold">Click to enlarge</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Zoom button top-right */}
-                                    <button onClick={() => setZoomOpen(true)} title="Fullscreen"
-                                        className="absolute top-4 right-4 bg-black/50 hover:bg-violet-600/80 text-white p-2.5 rounded-full
-                                        backdrop-blur-md transition-all border border-white/10 shadow-lg hover:scale-110">
-                                        <Maximize2 size={16} />
+                                    className="relative w-full h-full flex items-center justify-center">
+                                    <img src={resultImg} alt="Try-on result" className="w-full h-full object-contain" />
+                                    <button onClick={handleDownload} title="Download Result"
+                                        className="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white p-2.5 rounded-full backdrop-blur-md transition-all border border-white/10 shadow-lg">
+                                        <Download size={18} />
                                     </button>
                                 </motion.div>
                             )}
@@ -372,65 +346,6 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                 </div>
             </div>
         </motion.div>
-
-        {/* ══════════════════════════════════════════════════════
-            ZOOM LIGHTBOX — fullscreen result viewer
-        ══════════════════════════════════════════════════════ */}
-        <AnimatePresence>
-            {zoomOpen && resultImg && (
-                <motion.div
-                    key="zoom-lightbox"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={() => setZoomOpen(false)}
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-                    style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(20px)' }}
-                >
-                    {/* Image — stop propagation so clicking image doesn't close */}
-                    <motion.div
-                        initial={{ scale: 0.85, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.85, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                        onClick={(e) => e.stopPropagation()}
-                        className="relative max-w-3xl max-h-[90vh] w-full flex items-center justify-center"
-                    >
-                        <img
-                            src={resultImg}
-                            alt="Try-on result fullscreen"
-                            className="max-w-full max-h-[85vh] object-contain rounded-3xl shadow-2xl
-                                border border-white/10"
-                        />
-
-                        {/* Top action bar — close only */}
-                        <div className="absolute top-4 right-4 flex gap-2">
-                            {/* Close */}
-                            <motion.button
-                                whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                                onClick={() => setZoomOpen(false)}
-                                title="Close"
-                                className="bg-white/10 hover:bg-red-500/80 text-white p-2.5 rounded-xl
-                                    shadow-lg transition-all backdrop-blur-sm border border-white/10"
-                            >
-                                <X size={18} />
-                            </motion.button>
-                        </div>
-
-                        {/* Bottom label */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2
-                            bg-black/50 backdrop-blur-md rounded-full px-4 py-1.5
-                            flex items-center gap-2 border border-white/10">
-                            <Star size={12} className="text-violet-400" />
-                            <span className="text-white text-xs font-medium">KidFit DZ — Virtual Try-On Result</span>
-                        </div>
-                    </motion.div>
-
-                    {/* Click outside hint */}
-                    <p className="absolute bottom-4 right-4 text-gray-600 text-xs">Click outside to close · ESC</p>
-                </motion.div>
-            )}
-        </AnimatePresence>
     )
 }
 
