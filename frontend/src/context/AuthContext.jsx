@@ -26,40 +26,31 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         let mounted = true
+        let resolved = false
 
-        const init = async () => {
-            // ✅ Step 1: Check session immediately from localStorage / Supabase cache
-            // This prevents the race condition caused by the old 3s safety timer
-            try {
-                const { data: { session } } = await supabase.auth.getSession()
-                if (!mounted) return
-
-                const u = session?.user ?? null
-                setUser(u)
-
-                if (u) {
-                    await fetchProfile(u.id)
-                } else {
-                    setProfile(null)
-                }
-            } catch (e) {
-                console.warn('getSession error:', e.message)
-            } finally {
-                // ✅ Clear loading ONLY after we know the real auth state
-                if (mounted) setLoading(false)
+        // Helper: mark loading as done (only once)
+        const done = () => {
+            if (mounted && !resolved) {
+                resolved = true
+                setLoading(false)
             }
         }
 
-        init()
+        // Safety net: always stop loading after 5s no matter what
+        // This prevents infinite spinner if Supabase is unreachable
+        const safetyTimer = setTimeout(() => {
+            if (!resolved) {
+                console.warn('AuthContext: 5s safety timer fired — clearing loading')
+                done()
+            }
+        }, 5000)
 
-        // ✅ Step 2: Listen for future auth changes (login, logout, token refresh)
+        // Primary auth check using onAuthStateChange
+        // In Supabase v2 this fires INITIAL_SESSION from localStorage cache
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 if (!mounted) return
 
-                // Skip INITIAL_SESSION — already handled by getSession() above
-                if (event === 'INITIAL_SESSION') return
-
                 const u = session?.user ?? null
                 setUser(u)
 
@@ -69,12 +60,13 @@ export function AuthProvider({ children }) {
                     setProfile(null)
                 }
 
-                setLoading(false)
+                done()
             }
         )
 
         return () => {
             mounted = false
+            clearTimeout(safetyTimer)
             subscription.unsubscribe()
         }
     }, [fetchProfile])
