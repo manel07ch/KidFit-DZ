@@ -207,19 +207,12 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                                         </div>
                                     </div>
 
-                                    {/* Action buttons top-right */}
-                                    <div className="absolute top-4 right-4 flex flex-col gap-2">
-                                        <button onClick={() => setZoomOpen(true)} title="Fullscreen"
-                                            className="bg-black/50 hover:bg-violet-600/80 text-white p-2.5 rounded-full
-                                            backdrop-blur-md transition-all border border-white/10 shadow-lg hover:scale-110">
-                                            <Maximize2 size={16} />
-                                        </button>
-                                        <button onClick={handleDownload} title="Download"
-                                            className="bg-black/50 hover:bg-green-600/80 text-white p-2.5 rounded-full
-                                            backdrop-blur-md transition-all border border-white/10 shadow-lg hover:scale-110">
-                                            <Download size={16} />
-                                        </button>
-                                    </div>
+                                    {/* Zoom button top-right */}
+                                    <button onClick={() => setZoomOpen(true)} title="Fullscreen"
+                                        className="absolute top-4 right-4 bg-black/50 hover:bg-violet-600/80 text-white p-2.5 rounded-full
+                                        backdrop-blur-md transition-all border border-white/10 shadow-lg hover:scale-110">
+                                        <Maximize2 size={16} />
+                                    </button>
                                 </motion.div>
                             )}
 
@@ -410,20 +403,8 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                                 border border-white/10"
                         />
 
-                        {/* Top action bar */}
+                        {/* Top action bar — close only */}
                         <div className="absolute top-4 right-4 flex gap-2">
-                            {/* Download */}
-                            <motion.button
-                                whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                                onClick={handleDownload}
-                                title="Download image"
-                                className="flex items-center gap-2 bg-green-500/90 hover:bg-green-500
-                                    text-white px-4 py-2.5 rounded-xl text-sm font-semibold
-                                    shadow-lg transition-all backdrop-blur-sm"
-                            >
-                                <Download size={16} /> Save Image
-                            </motion.button>
-
                             {/* Close */}
                             <motion.button
                                 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
