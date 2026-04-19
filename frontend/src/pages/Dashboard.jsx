@@ -16,114 +16,132 @@ import { supabase } from '../lib/supabaseClient'
 ══════════════════════════════════════════════════════════ */
 const DEMO_CLOTHING = [
     // ── Amazon Affiliate Products (tag: dhgds88-20) ────────────────────────
+    // $22.99 × 280 = 6437 → 6400 DA
     {
         name: 'Toddler Boys Color Block Sweatsuit Outfit Set 3T Fall Winter',
         image_url: 'https://m.media-amazon.com/images/I/41ZYjESFL7L._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0CFL3R5Q8?tag=dhgds88-20',
-        price: 3200, category: 'tops',
+        price: 6400, category: 'tops',
     },
+    // $25.99 × 280 = 7277 → 7300 DA
     {
         name: 'Arshiner Boys Fall Winter Color Block Sweatsuit Pants Set',
         image_url: 'https://m.media-amazon.com/images/I/31AMO8tnggL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0D7GX4XRP?tag=dhgds88-20',
-        price: 3500, category: 'tops',
+        price: 7300, category: 'tops',
     },
+    // $19.99 × 280 = 5597 → 5600 DA
     {
         name: 'FUNNIDEA Toddler Boys 2 Piece Color Block Sweatshirt Outfit Set',
         image_url: 'https://m.media-amazon.com/images/I/31ai2xvafRL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0FDG5BSWC?tag=dhgds88-20',
-        price: 2800, category: 'tops',
+        price: 5600, category: 'tops',
     },
+    // $18.99 × 280 = 5317 → 5300 DA
     {
         name: 'KAFIREN 2T Boys Toddler Fall Winter Outfits Long Sleeve Set',
         image_url: 'https://m.media-amazon.com/images/I/31ZuOaiwNBL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0CDVYKK1W?tag=dhgds88-20',
-        price: 2500, category: 'tops',
+        price: 5300, category: 'tops',
     },
+    // $26.99 × 280 = 7557 → 7600 DA
     {
         name: 'HINTINA 4T Toddler Boys Plaid Sweatsuit Hoodie Outfit Set',
         image_url: 'https://m.media-amazon.com/images/I/41yqPs+Ry4L._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0DDXL2654?tag=dhgds88-20',
-        price: 3800, category: 'tops',
+        price: 7600, category: 'tops',
     },
+    // $21.99 × 280 = 6157 → 6200 DA
     {
         name: 'Hevemexy Toddler Boy Hoodie Sweatsuit Tops and Pants Set',
         image_url: 'https://m.media-amazon.com/images/I/31ytgxVYTOL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0D76YD7MV?tag=dhgds88-20',
-        price: 3000, category: 'tops',
+        price: 6200, category: 'tops',
     },
     // ── Local Demo Items ────────────────────────────────────────────────────
+    // $19.99 × 280 = 5597 → 5600 DA
     {
         name: 'Amazon Top 1',
         image_url: 'https://m.media-amazon.com/images/I/71-tQVWYjWL.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0F3V2PZLB?tag=dhgds88-20',
-        price: 2800, category: 'tops',
+        price: 5600, category: 'tops',
     },
+    // $24.99 × 280 = 6997 → 7000 DA
     {
         name: 'Amazon Top 2',
         image_url: 'https://m.media-amazon.com/images/I/71ZIIDgg41L.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0FMDTQ4B3?tag=dhgds88-20',
-        price: 3500, category: 'tops',
+        price: 7000, category: 'tops',
     },
+    // $29.99 × 280 = 8397 → 8400 DA
     {
         name: 'SWISSWELL Boys Long Sleeve Button-up Shirt',
         image_url: 'https://m.media-amazon.com/images/I/41V+EYwgRdL._AC_SR100,100_QL65_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0F5PYCK2F?tag=dhgds88-20',
-        price: 4200, category: 'tops',
+        price: 8400, category: 'tops',
     },
+    // $15.99 × 280 = 4477 → 4500 DA
     {
         name: 'Kids Fashion 1',
         image_url: 'https://images.unsplash.com/photo-1652501089372-98938d79006e?w=500&q=80',
         affiliate_link: '',
-        price: 1800, category: 'tops',
+        price: 4500, category: 'tops',
     },
+    // $18.99 × 280 = 5317 → 5300 DA
     {
         name: 'Kids Fashion 2',
         image_url: 'https://i.pinimg.com/1200x/2b/fb/a6/2bfba6cf9e2d0dc241714f4c532d5523.jpg',
         affiliate_link: '',
-        price: 2200, category: 'pants',
+        price: 5300, category: 'pants',
     },
+    // $22.99 × 280 = 6437 → 6400 DA
     {
         name: 'Kids Fashion 3',
         image_url: 'https://i.pinimg.com/1200x/47/b6/16/47b616b40773ae1cb0431606cdecfc7b.jpg',
         affiliate_link: '',
-        price: 3200, category: 'tops',
+        price: 6400, category: 'tops',
     },
+    // $25.99 × 280 = 7277 → 7300 DA
     {
         name: 'Kids Fashion 4',
         image_url: 'https://i.pinimg.com/1200x/e3/88/39/e38839fb6271b7be291a500563fcdb72.jpg',
         affiliate_link: '',
-        price: 3500, category: 'tops',
+        price: 7300, category: 'tops',
     },
+    // $19.99 × 280 = 5597 → 5600 DA
     {
         name: 'Kids Fashion 5',
         image_url: 'https://i.pinimg.com/1200x/80/17/5a/80175ae917c9de324e8d53a53d9f4971.jpg',
         affiliate_link: '',
-        price: 2800, category: 'tops',
+        price: 5600, category: 'tops',
     },
+    // $28.99 × 280 = 8117 → 8100 DA
     {
         name: 'Kids Fashion 6',
         image_url: 'https://i.pinimg.com/736x/87/23/0d/87230dddfef4c9a1e4c4cc37d6251e20.jpg',
         affiliate_link: '',
-        price: 4000, category: 'pants',
+        price: 8100, category: 'pants',
     },
+    // $14.99 × 280 = 4197 → 4200 DA
     {
         name: 'Kids Fashion 7',
         image_url: 'https://i.pinimg.com/1200x/c1/96/eb/c196eb2cc1d3200860f059b4de9855af.jpg',
         affiliate_link: '',
-        price: 1500, category: 'tops',
+        price: 4200, category: 'tops',
     },
+    // $16.99 × 280 = 4757 → 4800 DA
     {
         name: 'Kids Fashion 8',
         image_url: 'https://i.pinimg.com/1200x/15/07/9a/15079a245957fe4598ed389c1ef2185f.jpg',
         affiliate_link: '',
-        price: 2000, category: 'tops',
+        price: 4800, category: 'tops',
     },
+    // $21.99 × 280 = 6157 → 6200 DA
     {
         name: 'Kids Fashion 9',
         image_url: 'https://i.pinimg.com/1200x/ea/1f/ac/ea1facc2d43fe8389f7118ca71bf1c4c.jpg',
         affiliate_link: '',
-        price: 5500, category: 'jackets',
+        price: 6200, category: 'jackets',
     }
 ]
 
