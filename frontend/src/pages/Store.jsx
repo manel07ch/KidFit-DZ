@@ -98,7 +98,7 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
             </div>
             <div className="p-3">
                 <p className="text-white text-xs font-semibold truncate">{sideItem.name}</p>
-                {sideItem.price && <p className="text-green-400 text-xs font-bold mt-0.5">${sideItem.price}</p>}
+                {sideItem.price && <p className="text-green-400 text-xs font-bold mt-0.5">{sideItem.price.toLocaleString('fr-DZ')} DA</p>}
                 {sideItem.affiliate_link && (
                     <p className="text-yellow-400/70 text-xs flex items-center gap-1 mt-0.5">
                         <TrendingUp size={9} /> Earn
@@ -292,7 +292,7 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
                             <p className="text-white font-bold truncate">{selectedItem.name}</p>
                             <div className="flex items-center gap-3 mt-0.5 flex-wrap">
                                 {selectedItem.price && (
-                                    <span className="text-green-400 font-bold text-lg">${selectedItem.price}</span>
+                                    <span className="text-green-400 font-bold text-lg">{selectedItem.price.toLocaleString('fr-DZ')} DA</span>
                                 )}
                                 {selectedItem.category && (
                                     <span className="text-gray-500 text-xs capitalize flex items-center gap-1">
@@ -384,7 +384,7 @@ function ProductCard({ item, onClick }) {
                 {item.price && (
                     <div className="absolute top-2 right-2 px-2.5 py-1 rounded-full
                           bg-black/50 border border-white/10 text-white text-xs font-bold backdrop-blur-sm">
-                        ${item.price}
+                        {item.price.toLocaleString('fr-DZ')} DA
                     </div>
                 )}
 
@@ -404,7 +404,7 @@ function ProductCard({ item, onClick }) {
                 <p className="text-white font-semibold text-sm truncate">{item.name}</p>
                 <div className="flex items-center justify-between mt-1.5">
                     {item.price ? (
-                        <span className="text-green-400 font-bold text-sm">${item.price}</span>
+                        <span className="text-green-400 font-bold text-sm">{item.price.toLocaleString('fr-DZ')} DA</span>
                     ) : <span />}
                     {item.affiliate_link && (
                         <span className="text-yellow-400/80 text-xs flex items-center gap-1">

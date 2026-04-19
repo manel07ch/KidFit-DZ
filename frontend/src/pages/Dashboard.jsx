@@ -20,110 +20,110 @@ const DEMO_CLOTHING = [
         name: 'Toddler Boys Color Block Sweatsuit Outfit Set 3T Fall Winter',
         image_url: 'https://m.media-amazon.com/images/I/41ZYjESFL7L._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0CFL3R5Q8?tag=dhgds88-20',
-        price: 22.99, category: 'tops',
+        price: 3200, category: 'tops',
     },
     {
         name: 'Arshiner Boys Fall Winter Color Block Sweatsuit Pants Set',
         image_url: 'https://m.media-amazon.com/images/I/31AMO8tnggL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0D7GX4XRP?tag=dhgds88-20',
-        price: 25.99, category: 'tops',
+        price: 3500, category: 'tops',
     },
     {
         name: 'FUNNIDEA Toddler Boys 2 Piece Color Block Sweatshirt Outfit Set',
         image_url: 'https://m.media-amazon.com/images/I/31ai2xvafRL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0FDG5BSWC?tag=dhgds88-20',
-        price: 19.99, category: 'tops',
+        price: 2800, category: 'tops',
     },
     {
         name: 'KAFIREN 2T Boys Toddler Fall Winter Outfits Long Sleeve Set',
         image_url: 'https://m.media-amazon.com/images/I/31ZuOaiwNBL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0CDVYKK1W?tag=dhgds88-20',
-        price: 18.99, category: 'tops',
+        price: 2500, category: 'tops',
     },
     {
         name: 'HINTINA 4T Toddler Boys Plaid Sweatsuit Hoodie Outfit Set',
         image_url: 'https://m.media-amazon.com/images/I/41yqPs+Ry4L._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0DDXL2654?tag=dhgds88-20',
-        price: 26.99, category: 'tops',
+        price: 3800, category: 'tops',
     },
     {
         name: 'Hevemexy Toddler Boy Hoodie Sweatsuit Tops and Pants Set',
         image_url: 'https://m.media-amazon.com/images/I/31ytgxVYTOL._AC_SX600_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0D76YD7MV?tag=dhgds88-20',
-        price: 21.99, category: 'tops',
+        price: 3000, category: 'tops',
     },
     // ── Local Demo Items ────────────────────────────────────────────────────
     {
         name: 'Amazon Top 1',
         image_url: 'https://m.media-amazon.com/images/I/71-tQVWYjWL.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0F3V2PZLB?tag=dhgds88-20',
-        price: 19.99, category: 'tops',
+        price: 2800, category: 'tops',
     },
     {
         name: 'Amazon Top 2',
         image_url: 'https://m.media-amazon.com/images/I/71ZIIDgg41L.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0FMDTQ4B3?tag=dhgds88-20',
-        price: 24.99, category: 'tops',
+        price: 3500, category: 'tops',
     },
     {
         name: 'SWISSWELL Boys Long Sleeve Button-up Shirt',
         image_url: 'https://m.media-amazon.com/images/I/41V+EYwgRdL._AC_SR100,100_QL65_.jpg',
         affiliate_link: 'https://www.amazon.com/dp/B0F5PYCK2F?tag=dhgds88-20',
-        price: 29.99, category: 'tops',
+        price: 4200, category: 'tops',
     },
     {
         name: 'Kids Fashion 1',
         image_url: 'https://images.unsplash.com/photo-1652501089372-98938d79006e?w=500&q=80',
         affiliate_link: '',
-        price: 15.99, category: 'tops',
+        price: 1800, category: 'tops',
     },
     {
         name: 'Kids Fashion 2',
         image_url: 'https://i.pinimg.com/1200x/2b/fb/a6/2bfba6cf9e2d0dc241714f4c532d5523.jpg',
         affiliate_link: '',
-        price: 18.99, category: 'pants',
+        price: 2200, category: 'pants',
     },
     {
         name: 'Kids Fashion 3',
         image_url: 'https://i.pinimg.com/1200x/47/b6/16/47b616b40773ae1cb0431606cdecfc7b.jpg',
         affiliate_link: '',
-        price: 22.99, category: 'tops',
+        price: 3200, category: 'tops',
     },
     {
         name: 'Kids Fashion 4',
         image_url: 'https://i.pinimg.com/1200x/e3/88/39/e38839fb6271b7be291a500563fcdb72.jpg',
         affiliate_link: '',
-        price: 25.99, category: 'tops',
+        price: 3500, category: 'tops',
     },
     {
         name: 'Kids Fashion 5',
         image_url: 'https://i.pinimg.com/1200x/80/17/5a/80175ae917c9de324e8d53a53d9f4971.jpg',
         affiliate_link: '',
-        price: 19.99, category: 'tops',
+        price: 2800, category: 'tops',
     },
     {
         name: 'Kids Fashion 6',
         image_url: 'https://i.pinimg.com/736x/87/23/0d/87230dddfef4c9a1e4c4cc37d6251e20.jpg',
         affiliate_link: '',
-        price: 28.99, category: 'pants',
+        price: 4000, category: 'pants',
     },
     {
         name: 'Kids Fashion 7',
         image_url: 'https://i.pinimg.com/1200x/c1/96/eb/c196eb2cc1d3200860f059b4de9855af.jpg',
         affiliate_link: '',
-        price: 14.99, category: 'tops',
+        price: 1500, category: 'tops',
     },
     {
         name: 'Kids Fashion 8',
         image_url: 'https://i.pinimg.com/1200x/15/07/9a/15079a245957fe4598ed389c1ef2185f.jpg',
         affiliate_link: '',
-        price: 16.99, category: 'tops',
+        price: 2000, category: 'tops',
     },
     {
         name: 'Kids Fashion 9',
         image_url: 'https://i.pinimg.com/1200x/ea/1f/ac/ea1facc2d43fe8389f7118ca71bf1c4c.jpg',
         affiliate_link: '',
-        price: 21.99, category: 'jackets',
+        price: 5500, category: 'jackets',
     }
 ]
 
@@ -176,7 +176,7 @@ function ItemCard({ item, onDelete }) {
                 {item.price && (
                     <div className="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-green-500/20 border border-green-500/30
                           text-green-400 text-xs font-bold backdrop-blur-sm">
-                        ${item.price}
+                        {item.price.toLocaleString('fr-DZ')} DA
                     </div>
                 )}
 
@@ -344,7 +344,7 @@ export default function Dashboard() {
 
     /* derived affiliate stats */
     const withLink = items.filter((i) => i.affiliate_link)
-    const totalValue = items.reduce((s, i) => s + (i.price || 0), 0).toFixed(2)
+    const totalValue = items.reduce((s, i) => s + (i.price || 0), 0).toLocaleString('fr-DZ')
 
     return (
         <div className="min-h-screen page-bg">
@@ -384,7 +384,7 @@ export default function Dashboard() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <AffiliateCard label="Total Items" value={items.length} icon={Package} color="bg-violet-500/20" />
                     <AffiliateCard label="With Affiliate Link" value={withLink.length} icon={LinkIcon} color="bg-pink-500/20" />
-                    <AffiliateCard label="Catalogue Value" value={`$${totalValue}`} icon={DollarSign} color="bg-green-500/20" />
+                    <AffiliateCard label="Catalogue Value" value={`${totalValue} DA`} icon={DollarSign} color="bg-green-500/20" />
                     <AffiliateCard label="Store Status" value="Live ✓" icon={Zap} color="bg-blue-500/20" />
                 </div>
 
@@ -563,11 +563,11 @@ export default function Dashboard() {
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
                                         <label className="text-gray-400 text-xs mb-1.5 flex items-center gap-1">
-                                            <DollarSign size={11} /> Price (USD)
+                                            <Tag size={11} /> Price (DA)
                                         </label>
-                                        <input id="item-price" type="number" step="0.01" min="0" value={price}
+                                        <input id="item-price" type="number" step="1" min="0" value={price}
                                             onChange={(e) => setPrice(e.target.value)}
-                                            placeholder="0.00" className="input-glass" />
+                                            placeholder="ex: 3500" className="input-glass" />
                                     </div>
                                     <div>
                                         <label className="text-gray-400 text-xs mb-1.5 flex items-center gap-1">
@@ -698,7 +698,7 @@ function AffiliateRow({ item }) {
                 <p className="text-gray-500 text-xs truncate">{item.affiliate_link}</p>
             </div>
             {item.price && (
-                <span className="text-green-400 text-sm font-bold flex-shrink-0">${item.price}</span>
+                <span className="text-green-400 text-sm font-bold flex-shrink-0">{item.price.toLocaleString('fr-DZ')} DA</span>
             )}
             <button onClick={copy}
                 className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${copied ? 'bg-green-500/20 text-green-400' : 'bg-violet-500/10 text-violet-400 hover:bg-violet-500/20'
