@@ -27,35 +27,54 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         let mounted = true
 
-        // Hard safety: always clear spinner after 3s no matter what (requested by user)
-        const safetyTimer = setTimeout(() => {
-            if (mounted) {
-                console.warn('AuthContext: 3s safety timer fired — clearing loading')
-                setLoading(false)
-            }
-        }, 3000)
-
-        // onAuthStateChange is the single source of truth in Supabase v2.
-        // It fires INITIAL_SESSION synchronously from localStorage cache (or
-        // after the first network check), so we don't need a separate getSession().
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
+        const init = async () => {
+            // ✅ Step 1: Check session immediately from localStorage / Supabase cache
+            // This prevents the race condition caused by the old 3s safety timer
+            try {
+                const { data: { session } } = await supabase.auth.getSession()
                 if (!mounted) return
+
                 const u = session?.user ?? null
                 setUser(u)
+
                 if (u) {
                     await fetchProfile(u.id)
                 } else {
                     setProfile(null)
                 }
+            } catch (e) {
+                console.warn('getSession error:', e.message)
+            } finally {
+                // ✅ Clear loading ONLY after we know the real auth state
+                if (mounted) setLoading(false)
+            }
+        }
+
+        init()
+
+        // ✅ Step 2: Listen for future auth changes (login, logout, token refresh)
+        const { data: { subscription } } = supabase.auth.onAuthStateChange(
+            async (event, session) => {
+                if (!mounted) return
+
+                // Skip INITIAL_SESSION — already handled by getSession() above
+                if (event === 'INITIAL_SESSION') return
+
+                const u = session?.user ?? null
+                setUser(u)
+
+                if (u) {
+                    await fetchProfile(u.id)
+                } else {
+                    setProfile(null)
+                }
+
                 setLoading(false)
-                clearTimeout(safetyTimer)
             }
         )
 
         return () => {
             mounted = false
-            clearTimeout(safetyTimer)
             subscription.unsubscribe()
         }
     }, [fetchProfile])
