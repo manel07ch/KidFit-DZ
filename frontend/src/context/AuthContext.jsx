@@ -28,7 +28,6 @@ export function AuthProvider({ children }) {
         let mounted = true
         let resolved = false
 
-        // Helper: mark loading as done (only once)
         const done = () => {
             if (mounted && !resolved) {
                 resolved = true
@@ -36,30 +35,41 @@ export function AuthProvider({ children }) {
             }
         }
 
-        // Safety net: always stop loading after 5s no matter what
-        // This prevents infinite spinner if Supabase is unreachable
+        // Safety net: resolve loading after 2s max (not 5s)
         const safetyTimer = setTimeout(() => {
             if (!resolved) {
-                console.warn('AuthContext: 5s safety timer fired — clearing loading')
+                console.warn('AuthContext: 2s safety timer fired')
                 done()
             }
-        }, 5000)
+        }, 2000)
 
-        // Primary auth check using onAuthStateChange
-        // In Supabase v2 this fires INITIAL_SESSION from localStorage cache
+        // Fast path: check existing session from localStorage immediately
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (!mounted || resolved) return
+            const u = session?.user ?? null
+            setUser(u)
+            if (u) {
+                fetchProfile(u.id).then(() => done())
+            } else {
+                done()
+            }
+        }).catch(() => done())
+
+        // Also subscribe to auth changes (login/logout events)
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 if (!mounted) return
+                // Only process real changes (SIGNED_IN, SIGNED_OUT)
+                // Skip INITIAL_SESSION since getSession() above handles it
+                if (event === 'INITIAL_SESSION') return
 
                 const u = session?.user ?? null
                 setUser(u)
-
                 if (u) {
                     await fetchProfile(u.id)
                 } else {
                     setProfile(null)
                 }
-
                 done()
             }
         )
@@ -90,9 +100,13 @@ export function AuthProvider({ children }) {
         return data
     }
 
-    // Sign out
-    const signOut = async () => {
-        await supabase.auth.signOut()
+    // Sign out — clears session immediately without waiting for network
+    const signOut = () => {
+        // 1. Fire Supabase signOut in background (don't await — can hang)
+        supabase.auth.signOut({ scope: 'local' }).catch(() => {})
+        // 2. Clear sessionStorage (where we now store the session)
+        sessionStorage.clear()
+        // 3. Clear React state
         setUser(null)
         setProfile(null)
     }

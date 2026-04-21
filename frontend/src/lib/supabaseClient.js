@@ -9,8 +9,19 @@ if (!supabaseUrl || !supabaseAnonKey) {
     )
 }
 
+// ── One-time cleanup of OLD localStorage sessions (before sessionStorage switch)
+// Without this, users who logged in before this fix would still be auto-logged in
+;['kidfit-auth-v2', ...Object.keys(localStorage).filter(k => k.startsWith('sb-'))].forEach(
+    k => localStorage.removeItem(k)
+)
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
-        storageKey: 'kidfit-auth-v2'
+        storageKey: 'kidfit-auth-v2',
+        // sessionStorage = session dies when tab closes or user opens new URL
+        // localStorage (default) = session persists forever → caused the auto-login bug
+        storage: window.sessionStorage,
+        persistSession: true,
+        autoRefreshToken: true,
     }
 })

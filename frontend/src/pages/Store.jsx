@@ -61,6 +61,7 @@ function TryOnModal({ item: initialItem, allItems, onClose }) {
         } catch (err) { setError(err.message) }
         finally { setLoading(false) }
     }
+    
 
     const copyAffiliateLink = () => {
         if (!selectedItem.affiliate_link) return
@@ -457,7 +458,10 @@ export default function Store() {
         (activeTab === 'All' || (i.category && i.category.toLowerCase().includes(activeTab.toLowerCase())))
     )
 
-    const handleSignOut = async () => { await signOut(); navigate('/auth') }
+    const handleSignOut = () => {
+        signOut()                          // instant — no await needed
+        window.location.replace('/auth')   // hard reload to /auth
+    }
 
     /* affiliate items count */
     const affiliateCount = items.filter((i) => i.affiliate_link).length

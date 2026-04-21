@@ -4,6 +4,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Auth from './pages/Auth'
 import Dashboard from './pages/Dashboard'
 import Store from './pages/Store'
+import Landing from './pages/Landing'
 
 /* Spinner shown while the auth/profile state is loading */
 function FullScreenLoader() {
@@ -42,13 +43,16 @@ export default function App() {
   return (
     <Routes>
 
+      {/* ── Landing: always visible at root ──────────────── */}
+      <Route path="/" element={<Landing />} />
+
       {/* ── Public: Auth page ────────────────────────────── */}
       <Route
         path="/auth"
         element={
           !user
             ? <Auth />
-            : <Navigate to={role === 'b2b' ? '/dashboard' : '/store'} replace />
+            : <Navigate to="/" replace />
         }
       />
 
@@ -69,16 +73,6 @@ export default function App() {
           <ProtectedRoute requiredRole="b2c">
             <Store />
           </ProtectedRoute>
-        }
-      />
-
-      {/* ── Root: redirect based on role ─────────────────── */}
-      <Route
-        path="/"
-        element={
-          !user
-            ? <Navigate to="/auth" replace />
-            : <Navigate to={role === 'b2b' ? '/dashboard' : '/store'} replace />
         }
       />
 

@@ -34,12 +34,11 @@ export default function Auth() {
 
         try {
             if (mode === 'login') {
-                const data = await signIn(email, password)
-                // role redirect handled by App.jsx after context updates
-                navigate(data.user ? '/' : '/auth')
+                await signIn(email, password)
+                navigate('/', { replace: true })
             } else {
                 await signUp(email, password, role)
-                navigate('/')
+                navigate('/', { replace: true })
             }
         } catch (err) {
             setError(err.message)
